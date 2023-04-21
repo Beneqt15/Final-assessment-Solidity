@@ -1,10 +1,10 @@
-# Hello World
+# MyToken - Final-assessment-Solidity
 
-This Solidity program is a simple "Hello World" program that demonstrates the basic syntax and functionality of the Solidity programming language. The purpose of this program is to serve as a starting point for those who are new to Solidity and want to get a feel for how it works.
+This Solidity program is a  program that demonstrates the basic syntax and functionality of the Solidity programming language. The purpose of this program is to serve as a starting point for those who are new to Solidity and want to get a feel for how it works.
 
 ## Description
 
-This program is a simple contract written in Solidity, a programming language used for developing smart contracts on the Ethereum blockchain. The contract has a single function that returns the string "Hello World!". This program serves as a simple and straightforward introduction to Solidity programming, and can be used as a stepping stone for more complex projects in the future.
+The Solidity program contract "MyToken" is a simple smart contract for creating a cryptocurrency token on the Ethereum blockchain. It has two public string variables for the token name and abbreviation, and a public uint variable to track the total supply of tokens. The contract uses a mapping to store the balance of tokens for each address that holds them. The contract also includes two functions: "mint" for creating new tokens and assigning them to an address, and "burn" for removing tokens from an address. This contract provides a basic framework for managing a token on the Ethereum blockchain.
 
 ## Getting Started
 
@@ -13,23 +13,37 @@ This program is a simple contract written in Solidity, a programming language us
 To run this program, you can use Remix, an online Solidity IDE. To get started, go to the Remix website at https://remix.ethereum.org/.
 
 Once you are on the Remix website, create a new file by clicking on the "+" icon in the left-hand sidebar. Save the file with a .sol extension (e.g., HelloWorld.sol). Copy and paste the following code into the file:
+contract MyToken {
 
-```javascript
-pragma solidity ^0.8.4;
+    // public variables here
+    string public tokenName = "Benedict Miguel";
+    string public tokenAbbrv = "BM";
+    uint public totalSupply = 0;
 
-contract HelloWorld {
-    function sayHello() public pure returns (string memory) {
-        return "Hello World!";
+    // mapping variable here
+    mapping(address => uint) public balances;
+
+    // mint function
+    function mint (address _address, uint _value) public{
+        totalSupply += _value;
+        balances [_address] += _value;
     }
+
+    // burn function
+    function burn (address _address, uint _value) public{
+        if (balances[_address] >=_value) {
+
+        totalSupply -= _value;
+        balances [_address] -= _value;
+    }
+
+}
 }
 
-```
 
-To compile the code, click on the "Solidity Compiler" tab in the left-hand sidebar. Make sure the "Compiler" option is set to "0.8.4" (or another compatible version), and then click on the "Compile HelloWorld.sol" button.
+To compile the code, click on the "Solidity Compiler" tab in the left-hand sidebar. Make sure the "Compiler" option is set to "0.8.4" (or another compatible version), and then click on the "Compile token-maglente.sol" button.
 
-Once the code is compiled, you can deploy the contract by clicking on the "Deploy & Run Transactions" tab in the left-hand sidebar. Select the "HelloWorld" contract from the dropdown menu, and then click on the "Deploy" button.
-
-Once the contract is deployed, you can interact with it by calling the sayHello function. Click on the "HelloWorld" contract in the left-hand sidebar, and then click on the "sayHello" function. Finally, click on the "transact" button to execute the function and retrieve the "Hello World!" message.
+Once the code is compiled, you can deploy the contract by clicking on the "Deploy & Run Transactions" tab in the left-hand sidebar. After that you can now see the Token Name, Token Abbrv., Total Supply) and you can now mint and burn the tokens
 
 ## Authors
 
